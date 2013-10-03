@@ -12,15 +12,18 @@
             <version>5.4.0</version>
         </dependency>
         <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
         </dependency>
     </dependencies>
 
     <profiles>
         <profile>
             <id>download</id>
+            <activation>
+                <property><name>download</name></property>
+            </activation>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -32,11 +35,14 @@
                     </plugins>
                 </pluginManagement>
                 <!--
-                    Declaring the dependency plugin twice in a pom is not supported!!
-                    This is specific to the plugin, the same works with the maven-assembly-plugin for example.
+                    Declaring the dependency plugin once
                     
-                    Also binding the goals to different phases does not work and the first plugin declaration
-                    is always ignored!
+                    and bind two plugin executions to any phase. First you download sources,
+                    second you download javadocs.
+                    
+                    run:
+                    
+                    mvn compile -Ddownload
                 -->
                 <plugins>
                     <plugin>
@@ -45,7 +51,7 @@
                         <executions>
                             <execution>
                                 <id>sources</id>
-                                <phase>package</phase>
+                                <phase>process-resources</phase>
                                 <goals>
                                     <goal>sources</goal>
                                     <goal>resolve</goal>

@@ -31,6 +31,13 @@
                         </plugin>
                     </plugins>
                 </pluginManagement>
+                <!--
+                    Declaring the dependency plugin twice in a pom is not supported!!
+                    This is specific to the plugin, the same works with the maven-assembly-plugin for example.
+                    
+                    Also binding the goals to different phases does not work and the first plugin declaration
+                    is always ignored!
+                -->
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

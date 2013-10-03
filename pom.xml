@@ -47,23 +47,7 @@
                                 <id>sources</id>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>resolve</goal>
-                                </goals>
-                                <configuration>
-                                    <classifier>sources</classifier>
-                                    <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>javadoc</id>
-                                <phase>package</phase>
-                                <goals>
+                                    <goal>sources</goal>
                                     <goal>resolve</goal>
                                 </goals>
                                 <configuration>
